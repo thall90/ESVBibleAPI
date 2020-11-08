@@ -10,6 +10,6 @@ namespace ESVBible.Shared.Data.Models.EsvBible
 
         public int EsvBookId { get; set; }
 
-        public ICollection<EsvVerse> Verses { get; set; }
+        public ICollection<EsvVerse> Verses { get; set; } = null!;
     }
 }
