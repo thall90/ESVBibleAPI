@@ -1,6 +1,6 @@
 ﻿using AutoFixture;
+using ESVBible.Shared.Data.Models.EsvBible;
 using FluentAssertions;
-using ThriveNextGen.Data.Models.EsvBible;
 using ThriveNextGen.Read.Query.Mapping.EsvBible;
 using EsvBible.TestCore.AutoFixture;
 using Xunit;

@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ThriveNextGen.Data\ThriveNextGen.Data.csproj" />
-      <ProjectReference Include="..\..\src\ThriveNextGen.Shared\ThriveNextGen.Shared.csproj" />
+      <ProjectReference Include="..\..\src\ESVBible.Data\ESVBible.Data.csproj" />
+      <ProjectReference Include="..\..\src\ESVBible.Shared\ESVBible.Shared.csproj" />
     </ItemGroup>
 
 </Project>

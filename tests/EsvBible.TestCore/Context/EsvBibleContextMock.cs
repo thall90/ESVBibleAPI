@@ -1,5 +1,5 @@
-using ThriveNextGen.Data.Contexts;
-using ThriveNextGen.Shared.Data.Contexts;
+using ESVBible.Data.Contexts;
+using ESVBible.Shared.Data.Contexts;
 
 namespace EsvBible.TestCore.Context
 {

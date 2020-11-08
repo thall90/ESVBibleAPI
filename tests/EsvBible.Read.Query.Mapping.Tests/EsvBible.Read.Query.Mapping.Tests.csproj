@@ -12,8 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ThriveNextGen.Read.Query.Mapping\ThriveNextGen.Read.Query.Mapping.csproj" />
-      <ProjectReference Include="..\..\src\ThriveNextGen.Shared\ThriveNextGen.Shared.csproj" />
+      <ProjectReference Include="..\..\src\ESVBible.Read.Query.Mapping\ESVBible.Read.Query.Mapping.csproj" />
+      <ProjectReference Include="..\..\src\ESVBible.Read.Query.Transport\ESVBible.Read.Query.Transport.csproj" />
       <ProjectReference Include="..\EsvBible.TestCore\EsvBible.TestCore.csproj" />
     </ItemGroup>
 
