@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <RootNamespace>ThriveNextGen.Shared.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +11,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ESVBible.Shared.Enum\ESVBible.Shared.Enum.csproj" />
-      <ProjectReference Include="..\ThriveNextGen.Shared.Enum\ThriveNextGen.Shared.Enum.csproj" />
     </ItemGroup>
 
 </Project>
