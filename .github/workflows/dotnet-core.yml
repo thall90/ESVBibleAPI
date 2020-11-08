@@ -1,4 +1,4 @@
-name: .NET Core
+name: .NET Core Pipeline
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: ubuntu-latest
 
@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.100-rc.2.20479.15
-    - name: Install dependencies
+    - name: Install Dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
