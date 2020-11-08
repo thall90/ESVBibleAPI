@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ESVBible.Data.Contexts
 {
+#pragma warning disable 8618
     public class EsvBibleContext : DbContext, IEsvBibleContext
     {
         private const string schema = "EsvBible";
@@ -55,4 +56,5 @@ namespace ESVBible.Data.Contexts
             });
         }
     }
+#pragma warning restore 8618
 }

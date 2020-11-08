@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace ESVBible.Shared.Data.Models.EsvBible
 {
+#pragma warning disable 8618
     public class EsvChapter
     {
         public int Id { get; set; }
@@ -12,4 +13,5 @@ namespace ESVBible.Shared.Data.Models.EsvBible
 
         public ICollection<EsvVerse> Verses { get; set; } = null!;
     }
+#pragma warning restore 8618
 }
