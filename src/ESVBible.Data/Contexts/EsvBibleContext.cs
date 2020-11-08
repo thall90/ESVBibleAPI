@@ -13,12 +13,12 @@ namespace ESVBible.Data.Contexts
         {
         }
         
-        public DbSet<EsvBook> Books { get; set; }
+        public DbSet<EsvBook> Books { get; set; } = null!;
 
-        public DbSet<EsvChapter> Chapters { get; set; }
+        public DbSet<EsvChapter> Chapters { get; set; } = null!;
 
-        public DbSet<EsvVerse> Verses { get; set; }
-        
+        public DbSet<EsvVerse> Verses { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasSequence($"\"{schema}\".\"Book_Id_seq\"");
