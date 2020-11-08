@@ -19,7 +19,6 @@ jobs:
            dotnet-version: 5.0.100-rc.2.20479.15
       - name: Generate coverage report
         run: |
-          cd ./Tests/TicketStore.Tests/
           dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
       - name: Publish coverage report to coveralls.io
         uses: coverallsapp/github-action@v1.0.1
