@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ESVBible.Read.Query.Transport\ESVBible.Read.Query.Transport.csproj" />
+      <ProjectReference Include="..\ESVBible.Shared.Infrastructure\ESVBible.Shared.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

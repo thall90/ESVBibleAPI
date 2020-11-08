@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+        <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..</DockerfileContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+        <PackageReference Include="Scrutor" Version="3.2.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ESVBible.Data\ESVBible.Data.csproj" />
+      <ProjectReference Include="..\ESVBible.Read.Query.Handler\ESVBible.Read.Query.Handler.csproj" />
+      <ProjectReference Include="..\ESVBible.Read.Query\ESVBible.Read.Query.csproj" />
+      <ProjectReference Include="..\ESVBible.Shared.Infrastructure\ESVBible.Shared.Infrastructure.csproj" />
+      <ProjectReference Include="..\ESVBible.Shared\ESVBible.Shared.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>ThriveNextGen.Read.Query.Mapping</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ESVBible.Read.Query.Transport\ESVBible.Read.Query.Transport.csproj" />
+      <ProjectReference Include="..\ESVBible.Read.Query\ESVBible.Read.Query.csproj" />
+      <ProjectReference Include="..\ESVBible.Shared\ESVBible.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
