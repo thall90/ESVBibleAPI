@@ -1,27 +1,36 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM mcr.microsoft.com/dotnet/runtime:5.0 AS nugetrestore
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-5.0.0-rc.2-alpine3.12-amd64 AS base
+COPY ["EsvBible.sln", "./"]
+COPY ["Directory.Build.props", "./"]
+COPY ["tests/Directory.Build.props", "tests/"]
+COPY ["support/.", "support/."]
+
+COPY ["src/*/*.csproj", "./"]
+RUN for file in $(ls *.csproj); do mkdir -p src/${file%.*}/ && mv $file src/${file%.*}; done
+
+COPY ["tests/*/*.csproj", "./"]
+RUN for file in $(ls *.csproj); do mkdir -p tests/${file%.*}/ && mv $file tests/${file%.*}; done
+
+RUN dotnet restore -nowarn:msb3202,nu1503
+
+FROM nugetrestore AS build
+
+WORKDIR /
+
+COPY ["src/.", "src/."]
+COPY ["tests/.", "tests/."]
+COPY ["EsvBible.sln", "tests/."]
+
+RUN dotnet build -c Release --no-restore -v m EsvBible.sln
+
+FROM build AS unit-test-runner
+ENTRYPOINT [ "dotnet", "test", "--no-build", "-c", "Release", "/p:CollectCoverage=true", "/p:CoverletOutputFormat=lcov", "/p:CoverletOutput=../lcov"]
+
+FROM build as publish
+RUN dotnet publish -c Release -o /app --no-restore --no-build src/ESVBible.Api/ESVBible.Api.csproj
+
 WORKDIR /app
 EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-5.0.0-rc.2-alpine3.12-amd64 AS build
-WORKDIR /src
-COPY ["src/ESVBible.Api/ESVBible.Api.csproj", "src/ESVBible.Api/"]
-COPY ["src/ESVBible.Read.Query.Handler/ESVBible.Read.Query.Handler.csproj", "src/ESVBible.Read.Query.Handler/"]
-COPY ["src/ESVBible.Shared.Infrastructure/ESVBible.Shared.Infrastructure.csproj", "src/ESVBible.Shared.Infrastructure/"]
-COPY ["src/ESVBible.Shared.Enum/ESVBible.Shared.Enum.csproj", "src/ESVBible.Shared.Enum/"]
-COPY ["src/ESVBible.Read.Query.Mapping/ESVBible.Read.Query.Mapping.csproj", "src/ESVBible.Read.Query.Mapping/"]
-COPY ["src/ESVBible.Read.Query/ESVBible.Read.Query.csproj", "src/ESVBible.Read.Query/"]
-COPY ["src/ESVBible.Read.Query.Transport/ESVBible.Read.Query.Transport.csproj", "src/ESVBible.Read.Query.Transport/"]
-COPY ["src/ESVBible.Shared/ESVBible.Shared.csproj", "src/ESVBible.Shared/"]
-COPY ["src/ESVBible.Data/ESVBible.Data.csproj", "src/ESVBible.Data/"]
-RUN dotnet restore "src/ESVBible.Api/ESVBible.Api.csproj"
-COPY . .
-WORKDIR "/src/src/ESVBible.Api"
-RUN dotnet build "ESVBible.Api.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "ESVBible.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
