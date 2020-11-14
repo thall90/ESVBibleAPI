@@ -28,7 +28,8 @@ jobs:
 
       - name: Run tests
         run: |
-          cd src/EsvBible.Api/.
+          ls
+          cd ./src/EsvBible.Api/
           docker build --target unit-test-runner .
 
   # Push image to GitHub Packages.
