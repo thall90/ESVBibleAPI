@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/runtime:5.0 AS nugetrestore
 
-COPY ["EsvBible.sln", "./"]
+COPY ["ESVBible.sln", "./"]
 COPY ["Directory.Build.props", "./"]
 COPY ["tests/Directory.Build.props", "tests/"]
 COPY ["support/.", "support/."]
@@ -19,7 +19,7 @@ WORKDIR /
 
 COPY ["src/.", "src/."]
 COPY ["tests/.", "tests/."]
-COPY ["EsvBible.sln", "tests/."]
+COPY ["ESVBible.sln", "tests/."]
 
 RUN dotnet build -c Release --no-restore -v m EsvBible.sln
 
