@@ -1,6 +1,8 @@
 FROM mcr.microsoft.com/dotnet/runtime:5.0 AS nugetrestore
 WORKDIR ../../
 
+RUN pwd
+RUN ls
 COPY ["ESVBible.sln", "./"]
 COPY ["Directory.Build.props", "./"]
 COPY ["tests/Directory.Build.props", "tests/"]
